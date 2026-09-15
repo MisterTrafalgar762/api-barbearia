@@ -1,5 +1,5 @@
 # api-barbearia
-API para gerenciamento de uma barbeari
+API para gerenciamento de uma barbearia
 
 🛠️ Tecnologias Utilizadas
 * **Linguagem:** Java 17
