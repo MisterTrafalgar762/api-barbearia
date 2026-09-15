@@ -9,7 +9,3 @@ API para gerenciamento de uma barbeari
 * **Comunicação:** Spring Mail (`spring-boot-starter-mail`)
 * **Gerenciador de Dependências:** Maven
 
-### Passos para execução
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/SEU-USUARIO/api-barbearia.git](https://github.com/SEU-USUARIO/api-barbearia.git)
