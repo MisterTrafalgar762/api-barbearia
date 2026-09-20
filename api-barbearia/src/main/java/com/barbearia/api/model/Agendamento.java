@@ -1,42 +1,61 @@
 package com.barbearia.api.model;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
-@Table(name = "agendamentos")
+@Table(name = "tb_agendamento")
 public class Agendamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cliente_id", nullable = false)
-    private Long clienteId;
-
-    @Column(name = "servico_id", nullable = false)
-    private Long servicoId;
-
-    @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    // Construtor padrão
     public Agendamento() {}
 
-    public Agendamento(Long clienteId, Long servicoId, LocalDateTime dataHora) {
-        this.clienteId = clienteId;
-        this.servicoId = servicoId;
+    // Construtor completo (sem barbeiro)
+    public Agendamento(Long id, LocalDateTime dataHora, Cliente cliente) {
+        this.id = id;
+        this.dataHora = dataHora;
+        this.cliente = cliente;
+    }
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-    public Long getClienteId() { return clienteId; }
-    public void setClienteId(Long clienteId) { this.clienteId = clienteId; }
-
-    public Long getServicoId() { return servicoId; }
-    public void setServicoId(Long servicoId) { this.servicoId = servicoId; }
-
-    public LocalDateTime getDataHora() { return dataHora; }
-    public void setDataHora(LocalDateTime dataHora) { this.dataHora = dataHora; }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
